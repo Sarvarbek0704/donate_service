@@ -10,13 +10,7 @@ import { Recipient } from "../recipient/models/recipient.model";
 import { AuthService } from "../auth/auth.service";
 
 @Module({
-  imports: [
-    JwtModule.register({
-      secret: "your-secret-key-12345",
-      signOptions: { expiresIn: "24h" },
-    }),
-    SequelizeModule.forFeature([Admin, Recipient]),
-  ],
+  imports: [JwtModule, SequelizeModule.forFeature([Admin, Recipient])],
   providers: [
     AdminAuthGuard,
     RecipientAuthGuard,

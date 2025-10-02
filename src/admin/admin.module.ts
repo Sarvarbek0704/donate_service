@@ -1,17 +1,13 @@
 import { Module } from "@nestjs/common";
-import { JwtModule } from "@nestjs/jwt";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { Admin } from "./models/admin.model";
 import { AdminService } from "./admin.service";
 import { AdminController } from "./admin.controller";
 import { AuthModule } from "../auth/auth.module";
+import { GuardsModule } from "../guards/guards.module";
 
 @Module({
-  imports: [
-    SequelizeModule.forFeature([Admin]),
-    AuthModule,
-    JwtModule,
-  ],
+  imports: [SequelizeModule.forFeature([Admin]), AuthModule, GuardsModule],
   providers: [AdminService],
   controllers: [AdminController],
   exports: [AdminService],

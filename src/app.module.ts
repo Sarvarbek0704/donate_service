@@ -1,4 +1,5 @@
 import { Module } from "@nestjs/common";
+import { JwtModule } from "@nestjs/jwt";
 import { DatabaseModule } from "./database/database.module";
 import { AuthModule } from "./auth/auth.module";
 import { GuardsModule } from "./guards/guards.module";
@@ -11,6 +12,11 @@ import { RecipientSocialModule } from "./recipient-social/recipient-social.modul
 @Module({
   imports: [
     DatabaseModule,
+    JwtModule.register({
+      global: true,
+      secret: "your-super-secret-key-12345-change-in-production",
+      signOptions: { expiresIn: "24h" },
+    }),
     AuthModule,
     GuardsModule,
     AdminModule,

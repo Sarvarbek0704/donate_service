@@ -1,5 +1,4 @@
 import { Module } from "@nestjs/common";
-import { JwtModule } from "@nestjs/jwt";
 import { SequelizeModule } from "@nestjs/sequelize";
 import { SocialMedia } from "./models/social-media.model";
 import { SocialMediaService } from "./social-media.service";
@@ -12,7 +11,6 @@ import { RecipientModule } from "../recipient/recipient.module";
   imports: [
     SequelizeModule.forFeature([SocialMedia]),
     GuardsModule,
-    JwtModule,
     AdminModule,
     RecipientModule,
   ],
